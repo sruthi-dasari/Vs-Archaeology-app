@@ -11,17 +11,33 @@ import { HiOutlineChevronDoubleLeft } from "react-icons/hi";
 
 export const MainContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  //   height: 100vh;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const DescriptionContainer = styled.div`
   display: flex;
-  height: 100vh;
-  width: 30vw;
   flex-direction: column;
   background-color: #f2f1ed;
   padding: 10px;
-  @media screen and(min-width: 768px) {
+
+  @media screen and (min-width: 768px) {
     padding: 40px;
+    order: 0;
+    height: 100%;
+    width: 30vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    order: 1;
+    position: relative;
+    top: -50px;
+    width: 100%;
+    border-radius: 50px 50px 0 0;
   }
 `;
 
@@ -229,11 +245,13 @@ export const ImageDisplayContainer = styled.div`
   background-image: url("https://res.cloudinary.com/my-cloud123/image/upload/v1692708641/img2_dxpnsi.jpg");
   background-size: cover;
   width: ${(props) => (props.displayDesc ? "100vw" : "70vw")};
-  height: 100vh;
+  height: 70vh;
   display: grid;
+  order: 0;
 
   @media screen and (min-width: 768px) {
-    height: none;
+    height: 100vh;
+    order: 1;
   }
 `;
 
@@ -241,18 +259,24 @@ export const StatueImage = styled.img`
   height: 400px;
   width: 400px;
   justify-self: center;
+  align-self: center;
 `;
 
 export const ArrowButton = styled.button`
-  height: 30px;
-  width: 40px;
-  justify-content: flex-start;
-  align-self: flex-start;
-  margin-top: 50px;
-  background-color: #d9d7d2;
-  border: 2px solid #ffffff;
-  border-radius: 5px;
-  cursor: pointer;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    height: 30px;
+    width: 40px;
+    justify-content: flex-start;
+    align-self: flex-start;
+    margin-top: 50px;
+    background-color: #d9d7d2;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 `;
 
 export const LeftArrowIcon = styled(HiOutlineChevronDoubleLeft)`
